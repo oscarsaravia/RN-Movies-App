@@ -6,12 +6,13 @@ interface Props {
     movie: Movie;
     cardHeight?: number;
     cardWidth?: number;
+    horizontalMargin?: number;
 }
 
-export const MoviePoster = ( { movie, cardHeight = 420, cardWidth = 300 }: Props) => {
+export const MoviePoster = ( { movie, cardHeight = 420, cardWidth = 300, horizontalMargin = 0 }: Props) => {
     const { poster_path } = movie;
   return (
-    <View style={{ width: cardWidth, height: cardHeight }}>
+    <View style={{ width: cardWidth, height: cardHeight, marginHorizontal: horizontalMargin}}>
         <View style={ styles.imageContainer }>
             <Image
                 source={ poster_path ? { uri: `https://image.tmdb.org/t/p/w500${ poster_path }` } : require('../assets/no-image.jpg')}
